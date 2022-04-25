@@ -18,5 +18,9 @@ public class FXController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mainimage.setImage(new Image(FXController.class.getResource("map.jpg").toExternalForm()));
     }
+
+    public void close() {
+        System.exit(0);
+    }
 }
 
