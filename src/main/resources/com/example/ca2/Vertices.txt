@@ -6,60 +6,60 @@
 6,The Credit Suisse Exhibition:Raphael
 7,The Credit Suisse Exhibition:Raphael
 8,The Credit Suisse Exhibition:Raphael
-9, Venice: 1530-1600
-10,The sacred and profane in 16th century Italian Art
-11,Veronese's 'Four Allegories of Love'
-12,Northern Italian Portraiture 1510-1580
-13,Apollo and Neptune paintings
-0,Central Hall
-14,The Netherlands
-15,The Four Elements
-16,Cranach the Elder Huber and Seisenegger
-17,Altdorfer Rottenhammer Wertinger
-17a,Closed
-18,Rubens
-19,Dutch landscapes
-20,A different view of Flanders
-21,Van Dyck
-22,Rembrandt
-23,Dutch portraiture
-24,International ambitions
-25,A New Art For A New Nation (2)
-26,Brueghel the Elder van der Heyden van de Velde
-27,de Hooch Saenredam Vermeer
-28,A New Art For A New Nation (1)
-29,French Painting 1600–1700
-30,Spain
-31,Closed
-32,17th-century Italian paintings
-33,David, Fragonard and Vernet
-34,Constable Turner and Stubbs
-35,Hogarth and British Painting
-36,Claude and Turner
-37,The Grand Tour
-38,Canaletto and Guardi
-39,Canaletto Pittoni and Tiepolo
-40,18th-century painting in Europe
-41,Cézanne Monet Renoir
-42,Closed
-43,Gauguin Seurat Van Gogh
-44,Cézanne Degas Monet
-45,Constable Corot and Ingres
-46,Gainsborough's Blue Boy
-51,Italy 1250–1350
-51a,Fra Angelico friar-painter of San Domenico
-52,Siena 1300–1450
-53,Florence and Beyond 1440–1470
-54,Mantegna and Crivelli
-55,Venice and the Veneto 1460–1510
-56,Venice after 1500
-57,Ferrara and Bologna
-58,Botticelli and Filippino Lippi
-59,Florence 1460–1500
-60,Florentine Altarpieces about 1350 – about 1460
-61,Central Italy 1480–1520
-62,Cologne and north-western Germany
-63,15th-century Netherlandish painting
-64,Beyond the Netherlands
-65,Southern Germany and Austria
-66,Leonardo da Vinci at the National Gallery
+9, Venice: 1530-1600,226,271
+10,The sacred and profane in 16th century Italian Art,285,271
+11,Veronese's 'Four Allegories of Love',326,271
+12,Northern Italian Portraiture 1510-1580,367,271
+13,Apollo and Neptune paintings,675,693
+0,Central Hall,437,273
+14,The Netherlands,326,234
+15,The Four Elements,240,194
+16,Cranach the Elder Huber and Seisenegger,206,206
+17,Altdorfer Rottenhammer Wertinger,205,182
+17a,Closed,208,163
+18,Rubens,241,112
+19,Dutch landscapes,197,140
+20,A different view of Flanders,198,112
+21,Van Dyck,197,84
+22,Rembrandt,286,83
+23,Dutch portraiture,284,112
+24,International ambitions,285,140
+25,A New Art For A New Nation (2),327,141
+26,Brueghel the Elder van der Heyden van de Velde,270,164
+27,de Hooch Saenredam Vermeer,300,164
+28,A New Art For A New Nation (1),327,162
+29,French Painting 1600–1700,327,193
+30,Spain,436,194
+31,Closed,436,155
+32,17th-century Italian paintings,543,186
+33,David, Fragonard and Vernet,629,194
+34,Constable Turner and Stubbs,629,271
+35,Hogarth and British Painting,587,271
+36,Claude and Turner,543,271
+37,The Grand Tour,543,231
+38,Canaletto and Guardi,500,271
+39,Canaletto Pittoni and Tiepolo,469,270
+40,18th-century painting in Europe,544,312
+41,Cézanne Monet Renoir,642,344
+42,Closed,613,380
+43,Gauguin Seurat Van Gogh,581,369
+44,Cézanne Degas Monet,545,369
+45,Constable Corot and Ingres,506,369
+46,Gainsborough's Blue Boy,469,378
+51,Italy 1250–1350,92,258
+51a,Fra Angelico friar-painter of San Domenico,92,233
+52,Siena 1300–1450,101,296
+53,Florence and Beyond 1440–1470,101,321
+54,Mantegna and Crivelli,101,351
+55,Venice and the Veneto 1460–1510,101,380
+56,Venice after 1500,96,405
+57,Ferrara and Bologna,62,391
+58,Botticelli and Filippino Lippi,62,351
+59,Florence 1460–1500,62,309
+60,Florentine Altarpieces about 1350 – about 1460,62,258
+61,Central Italy 1480–1520,26,258
+62,Cologne and north-western Germany,26,293
+63,15th-century Netherlandish painting,26,328
+64,Beyond the Netherlands,27,356
+65,Southern Germany and Austria,29,377
+66,Leonardo da Vinci at the National Gallery,31,399
