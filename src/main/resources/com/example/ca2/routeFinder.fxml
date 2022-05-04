@@ -10,8 +10,9 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ca2.FXController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ca2.FXController">
     <children>
         <MenuBar layoutX="1.0" layoutY="-4.0" prefHeight="29.0" prefWidth="1102.0">
             <menus>
@@ -28,14 +29,19 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="786.0" prefWidth="1601.0">
                      <children>
-                        <ImageView fx:id="mainimage" fitHeight="625.0" fitWidth="735.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
-                        <ComboBox fx:id="start" layoutX="861.0" layoutY="55.0" prefWidth="200.0" style="-fx-background-color: white;" />
+                        <Pane fx:id="mapPane" layoutX="14.0" layoutY="10.0">
+                           <children>
+                              <ImageView fx:id="mainimage" fitHeight="625.0" fitWidth="735.0" pickOnBounds="true" preserveRatio="true" />
+                           </children>
+                        </Pane>
                         <Label layoutX="873.0" layoutY="14.0" text="Create a Route:" />
                         <Label layoutX="861.0" layoutY="38.0" text="Start" />
-                        <ComboBox fx:id="destination" layoutX="861.0" layoutY="116.0" prefWidth="200.0" style="-fx-background-color: white;" />
                         <Label layoutX="861.0" layoutY="99.0" text="Destination" />
                         <Button fx:id="showRoutes" layoutX="861.0" layoutY="263.0" mnemonicParsing="false" onAction="#showRoutes" text="Show Route" />
                         <Button layoutX="954.0" layoutY="263.0" mnemonicParsing="false" onAction="#restart" text="Restart" />
+                        <ComboBox fx:id="startingLocation" layoutX="857.0" layoutY="55.0" prefWidth="150.0" />
+                        <ComboBox fx:id="endLocation" layoutX="857.0" layoutY="122.0" prefWidth="150.0" />
+                        <Button fx:id="showAllRoutes" layoutX="861.0" layoutY="297.0" mnemonicParsing="false" onAction="#showAllRoutes" text="Show Route" />
                      </children>
                         </AnchorPane>
                     </content>

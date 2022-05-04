@@ -6,5 +6,6 @@ public class GraphLink {
 
     public GraphLink(GraphNode<?> destNode, int cost) {
         this.destNode = destNode;
+        this.cost = cost;
     }
 }

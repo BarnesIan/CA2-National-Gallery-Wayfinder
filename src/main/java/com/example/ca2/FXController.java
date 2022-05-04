@@ -4,13 +4,18 @@ import dijkstra.DijkstraAlgorithm;
 import dijkstra.GraphLink;
 import dijkstra.GraphNode;
 import dijkstra.Vertex;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 import java.io.*;
 import java.net.URL;
@@ -22,28 +27,32 @@ import java.util.ResourceBundle;
 public class FXController implements Initializable {
     @FXML
     ImageView mainimage;
-    @FXML
-    Button showRoutes,restart;
-    @FXML
-    ComboBox<Vertex> start, destination;
 
-    private GraphNode graphNode;
+    @FXML
+    Button showRoutes, restart;
+
+    @FXML
+    ComboBox startingLocation, endLocation;
+
+    @FXML
+    Pane mapPane;
+
     private DijkstraAlgorithm da;
-//    List<GraphNode<Vertex>> nodes = new ArrayList<>();
-    GraphNode<Vertex>[] nodes = new GraphNode[300];
-
+    //    List<GraphNode<Vertex>> nodes = new ArrayList<>();
+    GraphNode<Vertex>[] nodes = new GraphNode[76];
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         mainimage.setImage(new Image(FXController.class.getResource("map.jpg").toExternalForm()));
-        graphNode = new GraphNode(300);
         da = new DijkstraAlgorithm();
         loadData();
 
+       setupComboBox();
+
     }
 
-    public void loadData(){
+    public void loadData() {
         String line = "";
         BufferedReader br = null;
         BufferedReader br2 = null;
@@ -53,7 +62,7 @@ public class FXController implements Initializable {
 
         try {
             br = new BufferedReader(new FileReader("src/main/resources/com/example/ca2/Vertices.txt"));
-            while ((line = br.readLine()) != null){
+            while ((line = br.readLine()) != null) {
                 counter++;
                 vertices = line.split(",");
                 String roomNum = vertices[0];
@@ -62,46 +71,41 @@ public class FXController implements Initializable {
                 int y = Integer.valueOf(vertices[3]);
                 System.out.println("x: " + x + " y: " + y + " name : " + name);
 //                nodes.add(new GraphNode<>(new Vertex(roomNum,name, x, y)));
-                nodes[counter] = new GraphNode<Vertex>(new Vertex(roomNum,name, x, y));
+                nodes[counter] = new GraphNode<Vertex>(new Vertex(roomNum, name, x, y));
+
             }
 
             br2 = new BufferedReader(new FileReader("src/main/resources/com/example/ca2/Edges.txt"));
             line = "";
             while ((line = br2.readLine()) != null) {
                 String[] edges = line.split(",");
-
-//                    int danger = rand.nextInt(1000);
-//                    int difficulty = rand.nextInt(1000);
                 int con1 = Integer.parseInt(edges[0]);
-                String con2 = edges[1];
-//                    GraphNode<Vertex>[] nodeArray = graphNode.nodeList;
+                int con2 = Integer.parseInt(edges[1]);
 
-                int vertex1 = -1;
-                int vertex2 = -1;
-                boolean found1 = false;
-                boolean found2 = false;
-                System.out.println(con1 + " connected to " + con2);
-
-                for (GraphNode<Vertex> v : nodes) {
-                    if (v != null) {
-                        if (v.getData().getRoomNum().equals(con1)) {
-                            vertex1 = v.getNodeValue();
-                            found1 = true;
-                        } else if (v.getData().getRoomNum().equals(con2)) {
-                            vertex2 = v.getNodeValue();
-                            found2 = true;
-                        }
-                    }
-                }
-                if (vertex1 != -1 || vertex2 != -1) {
-                    if (found1 && found2) {
-                        GraphLink graphLink = new GraphLink(nodes[vertex2], 3);
-
-                        nodes[vertex1].connectToNodeUndirected(nodes[vertex2],graphLink.cost);
-
-                    }
+                if (con2 < 65 && con1 < 65) {
+                    nodes[con1].connectToNodeUndirected(nodes[con2], calcDistance(nodes[con1].getData().getxCoord(), nodes[con1].getData().getyCoord(), nodes[con2].getData().getxCoord(), nodes[con2].getData().getyCoord()));
                 }
 
+
+//                for (GraphNode<Vertex> v : nodes) {
+//                    if (v != null) {
+//                        if (v.getData().getRoomNum().equals(con1)) {
+//                            vertex1 = v.getNodeValue();
+//                            found1 = true;
+//                        } else if (v.getData().getRoomNum().equals(con2)) {
+//                            vertex2 = v.getNodeValue();
+//                            found2 = true;
+//                        }
+//                    }
+//                }
+//                if (vertex1 != -1 || vertex2 != -1) {
+//                    if (found1 && found2) {
+//                        System.out.println("cock");
+////                        GraphLink graphLink = new GraphLink(nodes[vertex2], calcDistance(nodes[vertex1].getData().getxCoord(), nodes[vertex1].getData().getyCoord(), nodes[vertex2].getData().getxCoord(), nodes[vertex2].getData().getyCoord()));
+//
+//                        nodes[vertex1].connectToNodeUndirected(nodes[vertex2], calcDistance(nodes[vertex1].getData().getxCoord(), nodes[vertex1].getData().getyCoord(), nodes[vertex2].getData().getxCoord(), nodes[vertex2].getData().getyCoord()));
+//                    }
+//                }
 
 //                    if (vertex1 != -1 || vertex2 != -1) {
 //                        if (found1 && found2) {
@@ -115,7 +119,7 @@ public class FXController implements Initializable {
 //                    }
             }
 
-            System.out.println(nodes[0].nodeList.size());
+//            System.out.println("size: " + nodes[30].nodeList.size() + " Name: " + nodes[30].data.getName() + " room num: " + nodes[30].data.getRoomNum());
 
 //            DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPath(nodes[10], nodes[0].getData().getRoomNum());
 //
@@ -128,6 +132,14 @@ public class FXController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    private void setupComboBox() {
+        for (int i = 0; i < 65; i++) {
+            startingLocation.getItems().add(nodes[i].getData().getRoomNum());
+            endLocation.getItems().add(nodes[i].getData().getRoomNum());
+        }
+    }
+
     public void close() {
         System.exit(0);
     }
@@ -136,12 +148,71 @@ public class FXController implements Initializable {
     }
 
     public void showRoutes(ActionEvent event) {
-//    int start =
+        int startPosition = startingLocation.getSelectionModel().getSelectedIndex();
+        int endPosition = endLocation.getSelectionModel().getSelectedIndex();
+
+//        for (int i = 0; i < 60; i++) {
+//            for (int j = 0; j < nodes[i].nodeList.size(); j++) {
+//                System.out.println(nodes[i].nodeList.get(j).cost);
+//            }
+//        }
+
+        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(nodes[startPosition], nodes[endPosition].getData());
+//        System.out.println(cpa.pathList.size());
+
+        for (GraphNode<Vertex> n : cpa.pathList) {
+            mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK));
+
+            System.out.println(n.getData().getRoomNum());
+        }
+        int j = 0;
+        int k = j + 1;
+        for (int i = 0; i < cpa.pathList.size(); i++) {
+            if (k < cpa.pathList.size()) {
+                int x1 = cpa.pathList.get(j).getData().getxCoord();
+                int y1 = cpa.pathList.get(j).getData().getyCoord();
+                int x2 = cpa.pathList.get(k).getData().getxCoord();
+                int y2 = cpa.pathList.get(k).getData().getyCoord();
+                mapPane.getChildren().add(connectNodes(x1,y1,x2,y2,Color.BLUE));
+            }
+            j++;
+            k++;
+        }
+
+        System.out.println("\n The total path cost is: " + cpa.pathCost);
     }
+
+    public void showAllRoutes() {
+//        int startPosition = startingLocation.getSelectionModel().getSelectedIndex();
+//        int endPosition = endLocation.getSelectionModel().getSelectedIndex();
+//
+//        for (int i = 0; i < nodes.length; i++) {
+//            for(int j = )
+//        }
+    }
+
     // The disatnce formula for calculating the distance between two points
-    private static int calcDistance(int node1X, int nod1Y, int node2X, int node2Y) {
-        double distance = Math.sqrt((node2Y - nod1Y) * (node2Y - nod1Y) + (node2X - node1X) * (node2X - node1X));
+    private static int calcDistance(int node1X, int node1Y, int node2X, int node2Y) {
+        double distance = Math.sqrt((node2Y - node1Y) * (node2Y - node1Y) + (node2X - node1X) * (node2X - node1X));
         return (int) distance;
     }
+
+    public Line connectNodes(int x1, int y1, int x2, int y2, Color color) {
+        Line line = new Line(x1 + 10, y1 + 10, x2 + 10, y2 + 10);
+        line.setStroke(color);
+        line.setStrokeWidth(5);
+        line.setOpacity(0.5);
+        return line;
+    }
+
+    public Rectangle drawNodes(int x, int y, Color color) {
+        Rectangle rec = new Rectangle(x, y, 20, 20);
+        rec.setStroke(Color.TRANSPARENT);
+        rec.setFill(color);
+        rec.setOpacity(0.5);
+        return rec;
+    }
+
 }
+
 
