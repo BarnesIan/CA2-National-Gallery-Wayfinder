@@ -9,9 +9,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.image.PixelReader;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -30,7 +34,7 @@ public class FXController implements Initializable {
 
     @FXML
     Button showRoutes, restart;
-
+    @FXML Label label;
     @FXML
     ComboBox startingLocation, endLocation;
 
@@ -50,6 +54,18 @@ public class FXController implements Initializable {
 
        setupComboBox();
 
+    }
+    
+    public void clickedImage(MouseEvent event) {
+        PixelReader preader = mainimage.getImage().getPixelReader();
+        Image inputImage = mainimage.getImage();
+
+        mainimage.setOnMouseClicked(e -> {
+            int x = (int) e.getX();
+            int y = (int) e.getY();
+            label.setText(String.format("xCoord = "+ x  + "ycoord = " + y));
+    });
+    
     }
 
     public void loadData() {
@@ -145,6 +161,7 @@ public class FXController implements Initializable {
     }
 
     public void restart(ActionEvent event) {
+        ((AnchorPane) mainimage.getParent()).getChildren().removeIf(e -> e.getClass() != mainimage.getClass());
     }
 
     public void showRoutes(ActionEvent event) {
@@ -198,7 +215,7 @@ public class FXController implements Initializable {
     }
 
     public Line connectNodes(int x1, int y1, int x2, int y2, Color color) {
-        Line line = new Line(x1 + 10, y1 + 10, x2 + 10, y2 + 10);
+        Line line = new Line(x1 , y1 , x2 , y2 );
         line.setStroke(color);
         line.setStrokeWidth(5);
         line.setOpacity(0.5);
@@ -206,10 +223,10 @@ public class FXController implements Initializable {
     }
 
     public Rectangle drawNodes(int x, int y, Color color) {
-        Rectangle rec = new Rectangle(x, y, 20, 20);
+        Rectangle rec = new Rectangle(x, y, 10, 10);
         rec.setStroke(Color.TRANSPARENT);
         rec.setFill(color);
-        rec.setOpacity(0.5);
+        rec.setOpacity(0.3);
         return rec;
     }
 

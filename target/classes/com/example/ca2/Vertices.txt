@@ -6,60 +6,60 @@
 6,The Credit Suisse Exhibition:Raphael,-1,-1
 7,The Credit Suisse Exhibition:Raphael,-1,-1
 8,The Credit Suisse Exhibition:Raphael,-1,-1
-9, Venice: 1530-1600,226,271
-10,The sacred and profane in 16th century Italian Art,285,271
-11,Veronese's 'Four Allegories of Love',326,271
-12,Northern Italian Portraiture 1510-1580,367,271
-13,Apollo and Neptune paintings,675,693
-0,Central Hall,437,273
-14,The Netherlands,326,234
-15,The Four Elements,240,194
-16,Cranach the Elder Huber and Seisenegger,206,206
-17,Altdorfer Rottenhammer Wertinger,205,182
-17a,Closed,208,163
-18,Rubens,241,112
-19,Dutch landscapes,197,140
-20,A different view of Flanders,198,112
-21,Van Dyck,197,84
-22,Rembrandt,286,83
-23,Dutch portraiture,284,112
-24,International ambitions,285,140
-25,A New Art For A New Nation (2),327,141
-26,Brueghel the Elder van der Heyden van de Velde,270,164
-27,de Hooch Saenredam Vermeer,300,164
-28,A New Art For A New Nation (1),327,162
-29,French Painting 1600–1700,327,193
-30,Spain,436,194
-31,Closed,436,155
-32,17th-century Italian paintings,543,186
-33,David Fragonard and Vernet,629,194
-34,Constable Turner and Stubbs,629,271
-35,Hogarth and British Painting,587,271
-36,Claude and Turner,543,271
-37,The Grand Tour,543,231
-38,Canaletto and Guardi,500,271
-39,Canaletto Pittoni and Tiepolo,469,270
-40,18th-century painting in Europe,544,312
-41,Cézanne Monet Renoir,642,344
-42,Closed,613,380
-43,Gauguin Seurat Van Gogh,581,369
-44,Cézanne Degas Monet,545,369
-45,Constable Corot and Ingres,506,369
-46,Gainsborough's Blue Boy,469,378
-51,Italy 1250–1350,92,258
-51a,Fra Angelico friar-painter of San Domenico,92,233
-52,Siena 1300–1450,101,296
-53,Florence and Beyond 1440–1470,101,321
-54,Mantegna and Crivelli,101,351
-55,Venice and the Veneto 1460–1510,101,380
-56,Venice after 1500,96,405
-57,Ferrara and Bologna,62,391
-58,Botticelli and Filippino Lippi,62,351
-59,Florence 1460–1500,62,309
-60,Florentine Altarpieces about 1350 – about 1460,62,258
-61,Central Italy 1480–1520,26,258
-62,Cologne and north-western Germany,26,293
-63,15th-century Netherlandish painting,26,328
-64,Beyond the Netherlands,27,356
-65,Southern Germany and Austria,29,377
-66,Leonardo da Vinci at the National Gallery,31,399
+9, Venice: 1530-1600,205,244
+10,The sacred and profane in 16th century Italian Art,257,244
+11,Veronese's 'Four Allegories of Love',294,242
+12,Northern Italian Portraiture 1510-1580,330,244
+13,Apollo and Neptune paintings,343,210
+0,Central Hall,391,243
+14,The Netherlands,294,212
+15,The Four Elements,217,174
+16,Cranach the Elder Huber and Seisenegger,186,188
+17,Altdorfer Rottenhammer Wertinger,185,163
+17a,Closed,187,149
+18,Rubens,217,101
+19,Dutch landscapes,179,127
+20,A different view of Flanders,178,101
+21,Van Dyck,178,75
+22,Rembrandt,257,74
+23,Dutch portraiture,257,99
+24,International ambitions,257,127
+25,A New Art For A New Nation (2),294,126
+26,Brueghel the Elder van der Heyden van de Velde,243,147
+27,de Hooch Saenredam Vermeer,269,146
+28,A New Art For A New Nation (1),295,145
+29,French Painting 1600–1700,295,173
+30,Spain,392,173
+31,Closed,393,139
+32,17th-century Italian paintings,491,166
+33,David Fragonard and Vernet,568,176
+34,Constable Turner and Stubbs,569,243
+35,Hogarth and British Painting,530,244
+36,Claude and Turner,491,244
+37,The Grand Tour,491,209
+38,Canaletto and Guardi,452,244
+39,Canaletto Pittoni and Tiepolo,423,245
+40,18th-century painting in Europe,491,282
+41,Cézanne Monet Renoir,579,310
+42,Closed,552,342
+43,Gauguin Seurat Van Gogh,525,333
+44,Cézanne Degas Monet,491,333
+45,Constable Corot and Ingres,457,333
+46,Gainsborough's Blue Boy,423,341
+51,Italy 1250–1350,83,233
+51a,Fra Angelico friar-painter of San Domenico,82,207
+52,Siena 1300–1450,92,268
+53,Florence and Beyond 1440–1470,91,291
+54,Mantegna and Crivelli,91,317
+55,Venice and the Veneto 1460–1510,91,343
+56,Venice after 1500,86,366
+57,Ferrara and Bologna,56,352
+58,Botticelli and Filippino Lippi,57,316
+59,Florence 1460–1500,57,279
+60,Florentine Altarpieces about 1350 – about 1460,56,232
+61,Central Italy 1480–1520,23,234
+62,Cologne and north-western Germany,23,263
+63,15th-century Netherlandish painting,23,296
+64,Beyond the Netherlands,25,322
+65,Southern Germany and Austria,27,341
+66,Leonardo da Vinci at the National Gallery,29,360
