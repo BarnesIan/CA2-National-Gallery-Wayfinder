@@ -1,11 +1,11 @@
-package com.example.ca2;
+package dijkstra;
 
 public class Vertex {
-    private int roomNum;
+    private String roomNum;
     private String name;
     private int xCoord,yCoord;
 
-    public Vertex(int roomNum,String name,int xCoord,int yCoord){
+    public Vertex(String roomNum,String name,int xCoord,int yCoord){
         this.roomNum = roomNum;
         this.name = name;
         this.xCoord = xCoord;
@@ -13,7 +13,7 @@ public class Vertex {
 
     }
 
-    public int getRoomNum() {
+    public String getRoomNum() {
         return roomNum;
     }
 
@@ -29,7 +29,7 @@ public class Vertex {
         return yCoord;
     }
 
-    public void setRoomNum(int roomNum) {
+    public void setRoomNum(String roomNum) {
         this.roomNum = roomNum;
     }
 

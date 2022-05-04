@@ -21,4 +21,28 @@ public class GraphNode<T> {
         nodeList.add(new GraphLink(destNode, cost));
         destNode.nodeList.add(new GraphLink(this, cost));
     }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public int getNodeValue() {
+        return nodeValue;
+    }
+
+    public void setNodeValue(int nodeValue) {
+        this.nodeValue = nodeValue;
+    }
+
+    public List<GraphLink> getNodeList() {
+        return nodeList;
+    }
+
+    public void setNodeList(List<GraphLink> nodeList) {
+        this.nodeList = nodeList;
+    }
 }

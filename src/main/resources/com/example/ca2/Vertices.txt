@@ -1,11 +1,11 @@
-1,The Credit Suisse Exhibition:Raphael
-2,The Credit Suisse Exhibition:Raphael
-3,The Credit Suisse Exhibition:Raphael
-4,The Credit Suisse Exhibition:Raphael
-5,The Credit Suisse Exhibition:Raphael
-6,The Credit Suisse Exhibition:Raphael
-7,The Credit Suisse Exhibition:Raphael
-8,The Credit Suisse Exhibition:Raphael
+1,The Credit Suisse Exhibition:Raphael,-1,-1
+2,The Credit Suisse Exhibition:Raphael,-1,-1
+3,The Credit Suisse Exhibition:Raphael,-1,-1
+4,The Credit Suisse Exhibition:Raphael,-1,-1
+5,The Credit Suisse Exhibition:Raphael,-1,-1
+6,The Credit Suisse Exhibition:Raphael,-1,-1
+7,The Credit Suisse Exhibition:Raphael,-1,-1
+8,The Credit Suisse Exhibition:Raphael,-1,-1
 9, Venice: 1530-1600,226,271
 10,The sacred and profane in 16th century Italian Art,285,271
 11,Veronese's 'Four Allegories of Love',326,271
@@ -32,7 +32,7 @@
 30,Spain,436,194
 31,Closed,436,155
 32,17th-century Italian paintings,543,186
-33,David, Fragonard and Vernet,629,194
+33,David Fragonard and Vernet,629,194
 34,Constable Turner and Stubbs,629,271
 35,Hogarth and British Painting,587,271
 36,Claude and Turner,543,271
