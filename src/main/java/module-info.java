@@ -5,4 +5,6 @@ module com.example.ca2 {
 
     opens com.example.ca2 to javafx.fxml;
     exports com.example.ca2;
+    exports dijkstra;
+    opens dijkstra to javafx.fxml;
 }

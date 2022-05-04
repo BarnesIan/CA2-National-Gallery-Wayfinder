@@ -1,0 +1,12 @@
+Custom graph data structure/classes = 10%
+ Generate any single valid route between two points/rooms/exhibits = 10%
+ Generate multiple valid route permutations using DFS = 10%
+ Shortest route using Dijkstra’s algorithm = 15%
+ Shortest route using breadth-first search (BFS) (and illustrating route on map) = 15%
+ Most interesting route using Dijkstra’s algorithm = 10%
+ Waypoint support = 5%
+ Avoiding specified rooms/exhibits = 5%
+ JavaFX GUI = 5%
+ JUnit testing = 5%
+ JMH benchmarking of key methods = 5%
+ General (overall completeness, structure, commenting, logic, etc.) = 5%
