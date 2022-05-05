@@ -36,7 +36,7 @@ public class FXController implements Initializable {
     Button showRoutes, restart;
     @FXML Label label;
     @FXML
-    ComboBox startingLocation, endLocation;
+    ComboBox startingLocation, endLocation,avoid;
 
     @FXML
     Pane mapPane;
@@ -123,6 +123,7 @@ public class FXController implements Initializable {
         for (int i = 0; i < 65; i++) {
             startingLocation.getItems().add(nodes.get(i).getData().getRoomNum());
             endLocation.getItems().add(nodes.get(i).getData().getRoomNum());
+            avoid.getItems().add(nodes.get(i).getData().getRoomNum());
         }
     }
 
@@ -132,6 +133,9 @@ public class FXController implements Initializable {
 
     public void restart(ActionEvent event) {
         mapPane.getChildren().removeIf((e -> e.getClass() != mainimage.getClass()));
+        nodes.removeAll(nodes);
+        loadData();
+        System.out.println(nodes.size());
     }
 
     public void showRoutes(ActionEvent event) {
