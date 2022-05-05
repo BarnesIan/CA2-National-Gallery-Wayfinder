@@ -42,9 +42,8 @@ public class FXController implements Initializable {
     Pane mapPane;
 
     private DijkstraAlgorithm da;
-    //    List<GraphNode<Vertex>> nodes = new ArrayList<>();
-    GraphNode<Vertex>[] nodes = new GraphNode[76];
-
+        List<GraphNode<Vertex>> nodes = new ArrayList<>();
+    GraphNode<String>[] strings = new GraphNode[100];
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -75,11 +74,9 @@ public class FXController implements Initializable {
         Random rand = new Random();
         String[] vertices = new String[0];
         int counter = -1;
-
         try {
             br = new BufferedReader(new FileReader("src/main/resources/com/example/ca2/Vertices.txt"));
             while ((line = br.readLine()) != null) {
-                counter++;
                 vertices = line.split(",");
                 String roomNum = vertices[0];
                 String name = vertices[1];
@@ -87,61 +84,34 @@ public class FXController implements Initializable {
                 int y = Integer.valueOf(vertices[3]);
                 System.out.println("x: " + x + " y: " + y + " name : " + name);
 //                nodes.add(new GraphNode<>(new Vertex(roomNum,name, x, y)));
-                nodes[counter] = new GraphNode<Vertex>(new Vertex(roomNum, name, x, y));
-
+                nodes.add(new GraphNode<>(new Vertex(roomNum, name, x, y)));
+                Rectangle rect = new Rectangle(x,y,10,10);
+                mapPane.getChildren().add(rect);
+                rect.setTranslateX(mainimage.getTranslateX());
+                rect.setTranslateY(mainimage.getTranslateY());
+                rect.setFill(Color.TRANSPARENT);
+                rect.setOpacity(0.3);
+                Tooltip rec = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
+                Tooltip.install(rect, rec);
+                rec.setWidth(500);
+                rec.setHeight(1400);
             }
-
-            br2 = new BufferedReader(new FileReader("src/main/resources/com/example/ca2/Edges.txt"));
-            line = "";
-            while ((line = br2.readLine()) != null) {
-                String[] edges = line.split(",");
-                int con1 = Integer.parseInt(edges[0]);
-                int con2 = Integer.parseInt(edges[1]);
-
-                if (con2 < 65 && con1 < 65) {
-                    nodes[con1].connectToNodeUndirected(nodes[con2], calcDistance(nodes[con1].getData().getxCoord(), nodes[con1].getData().getyCoord(), nodes[con2].getData().getxCoord(), nodes[con2].getData().getyCoord()));
+            for(int i = 0; i < nodes.size(); i ++){
+                for(int j = 0; j < nodes.size(); j ++){
+                    br2 = new BufferedReader(new FileReader("src/main/resources/com/example/ca2/Edges.txt"));
+                    line = "";
+                    while ((line = br2.readLine()) != null) {
+                        String[] edges = line.split(",");
+                        int con1 = Integer.parseInt(edges[0]);
+                        int con2 = Integer.parseInt(edges[1]);
+                        if(nodes.get(i).data.getRoomNum().matches(String.valueOf(con1))) {
+                            if (nodes.get(j).data.getRoomNum().matches(String.valueOf(con2))) {
+                                nodes.get(i).connectToNodeUndirected(nodes.get(j),calcDistance(nodes.get(i).getData().getxCoord(),nodes.get(i).getData().getyCoord(),nodes.get(j).getData().getxCoord(),nodes.get(j).getData().getyCoord()));
+                            }
+                        }
+                    }
                 }
-
-
-//                for (GraphNode<Vertex> v : nodes) {
-//                    if (v != null) {
-//                        if (v.getData().getRoomNum().equals(con1)) {
-//                            vertex1 = v.getNodeValue();
-//                            found1 = true;
-//                        } else if (v.getData().getRoomNum().equals(con2)) {
-//                            vertex2 = v.getNodeValue();
-//                            found2 = true;
-//                        }
-//                    }
-//                }
-//                if (vertex1 != -1 || vertex2 != -1) {
-//                    if (found1 && found2) {
-//                        System.out.println("cock");
-////                        GraphLink graphLink = new GraphLink(nodes[vertex2], calcDistance(nodes[vertex1].getData().getxCoord(), nodes[vertex1].getData().getyCoord(), nodes[vertex2].getData().getxCoord(), nodes[vertex2].getData().getyCoord()));
-//
-//                        nodes[vertex1].connectToNodeUndirected(nodes[vertex2], calcDistance(nodes[vertex1].getData().getxCoord(), nodes[vertex1].getData().getyCoord(), nodes[vertex2].getData().getxCoord(), nodes[vertex2].getData().getyCoord()));
-//                    }
-//                }
-
-//                    if (vertex1 != -1 || vertex2 != -1) {
-//                        if (found1 && found2) {
-//                            GraphLink link = new GraphLink("",
-//                                    calcDistance(graphNode.nodeList[vertex1].getData().getX(), nodeArray[vertex1].getData().getY(),
-//                                            nodeArray[vertex2].getData().getX(), nodeArray[vertex2].getData().getY()),
-//                                    difficulty, danger);
-//
-//                            nodeArray[vertex1].connectUndirected(nodeArray[vertex2], link);
-//                        }
-//                    }
             }
-
-//            System.out.println("size: " + nodes[30].nodeList.size() + " Name: " + nodes[30].data.getName() + " room num: " + nodes[30].data.getRoomNum());
-
-//            DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPath(nodes[10], nodes[0].getData().getRoomNum());
-//
-//            for (GraphNode<?> n : cpa.pathList)
-//                System.out.println(n.data);
-//            System.out.println("\n The total path cost is: " + cpa.pathCost);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -151,8 +121,8 @@ public class FXController implements Initializable {
 
     private void setupComboBox() {
         for (int i = 0; i < 65; i++) {
-            startingLocation.getItems().add(nodes[i].getData().getRoomNum());
-            endLocation.getItems().add(nodes[i].getData().getRoomNum());
+            startingLocation.getItems().add(nodes.get(i).getData().getRoomNum());
+            endLocation.getItems().add(nodes.get(i).getData().getRoomNum());
         }
     }
 
@@ -161,29 +131,24 @@ public class FXController implements Initializable {
     }
 
     public void restart(ActionEvent event) {
-        ((AnchorPane) mainimage.getParent()).getChildren().removeIf(e -> e.getClass() != mainimage.getClass());
+        mapPane.getChildren().removeIf((e -> e.getClass() != mainimage.getClass()));
     }
 
     public void showRoutes(ActionEvent event) {
         int startPosition = startingLocation.getSelectionModel().getSelectedIndex();
         int endPosition = endLocation.getSelectionModel().getSelectedIndex();
+        System.out.println(nodes.get(startPosition) + ""+ nodes.get(endPosition).getData());
 
-//        for (int i = 0; i < 60; i++) {
-//            for (int j = 0; j < nodes[i].nodeList.size(); j++) {
-//                System.out.println(nodes[i].nodeList.get(j).cost);
-//            }
-//        }
-
-        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(nodes[startPosition], nodes[endPosition].getData());
-//        System.out.println(cpa.pathList.size());
+        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(nodes.get(startPosition), nodes.get(endPosition).getData());
 
         for (GraphNode<Vertex> n : cpa.pathList) {
-            mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK));
-
             System.out.println(n.getData().getRoomNum());
+            mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum()));
+
+
         }
         int j = 0;
-        int k = j + 1;
+        int k = j+1;
         for (int i = 0; i < cpa.pathList.size(); i++) {
             if (k < cpa.pathList.size()) {
                 int x1 = cpa.pathList.get(j).getData().getxCoord();
@@ -222,11 +187,13 @@ public class FXController implements Initializable {
         return line;
     }
 
-    public Rectangle drawNodes(int x, int y, Color color) {
+    public Rectangle drawNodes(int x, int y, Color color,String name, String roomNum) {
         Rectangle rec = new Rectangle(x, y, 10, 10);
         rec.setStroke(Color.TRANSPARENT);
         rec.setFill(color);
         rec.setOpacity(0.3);
+        Tooltip rect = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
+        Tooltip.install(rec, rect);
         return rec;
     }
 

@@ -14,12 +14,12 @@ public class GraphNode<T> {
     }
 
     public void connectToNodeDirected(GraphNode<Vertex> destNode, int cost) {
-        nodeList.add(new GraphLink(destNode, cost));
+        nodeList.add(new GraphLink(destNode ,cost));
     }
 
     public void connectToNodeUndirected(GraphNode<?> destNode, int cost) {
         nodeList.add(new GraphLink(destNode, cost));
-        destNode.nodeList.add(new GraphLink(this, cost));
+       destNode.nodeList.add(new GraphLink(this, cost));
     }
 
     public T getData() {

@@ -21,7 +21,7 @@ public class Main extends Application {
 
     public static void main(String[] args) {
 
-        GraphNode<String> a = new GraphNode<>("Silver");
+  /*      GraphNode<String> a = new GraphNode<>("Silver");
         GraphNode<String> b = new GraphNode<>("Bronze");
         GraphNode<String> c = new GraphNode<>("Lead");
         GraphNode<String> d = new GraphNode<>("Tin");
@@ -46,7 +46,7 @@ public class Main extends Application {
 
         for (GraphNode<?> n : cpa.pathList)
             System.out.println(n.data);
-        System.out.println("\n The total path cost is: " + cpa.pathCost);
+        System.out.println("\n The total path cost is: " + cpa.pathCost);*/
 
         launch();
     }
