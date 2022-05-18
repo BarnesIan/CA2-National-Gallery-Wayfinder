@@ -158,7 +158,7 @@ public class FXController implements Initializable {
         int endPosition = endLocation.getSelectionModel().getSelectedIndex();
      //   System.out.println(nodes.get(startPosition) + ""+ nodes.get(endPosition).getData());
 
-        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(nodes.get(startPosition), nodes.get(endPosition).getData());
+        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(nodes.get(startPosition), nodes.get(endPosition).getData(), avoidNodes);
 
         for (GraphNode<Vertex> n : cpa.pathList) {
             System.out.println(n.getData().getRoomNum());
