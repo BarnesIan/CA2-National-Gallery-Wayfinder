@@ -36,7 +36,7 @@ public class FXController implements Initializable {
     Button showRoutes, restart;
     @FXML Label label;
     @FXML
-    ComboBox startingLocation, endLocation,avoid;
+    ComboBox startingLocation, endLocation, avoid, avoidRooms;
 
     @FXML
     Pane mapPane;
@@ -44,6 +44,7 @@ public class FXController implements Initializable {
     private DijkstraAlgorithm da;
         List<GraphNode<Vertex>> nodes = new ArrayList<>();
     GraphNode<String>[] strings = new GraphNode[100];
+    List<GraphNode<Vertex>> avoidNodes = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -129,6 +130,20 @@ public class FXController implements Initializable {
 
     public void close() {
         System.exit(0);
+    }
+
+    public void addToAvoidList() {
+        avoidRooms.getItems().add(nodes.get(avoid.getSelectionModel().getSelectedIndex()).getData().getRoomNum());
+        avoidNodes.add(nodes.get(avoid.getSelectionModel().getSelectedIndex()));
+        avoid.getItems().remove(avoid.getSelectionModel().getSelectedIndex());
+        avoid.getSelectionModel().clearSelection();
+    }
+
+    public void removeFromAvoidList() {
+        avoid.getItems().add(avoidNodes.get(avoidRooms.getSelectionModel().getSelectedIndex()).getData().getRoomNum());
+        avoidRooms.getItems().remove(avoidRooms.getSelectionModel().getSelectedIndex());
+        avoidNodes.remove(avoidRooms.getSelectionModel().getSelectedIndex());
+        avoidRooms.getSelectionModel().clearSelection();
     }
 
     public void restart(ActionEvent event) {
