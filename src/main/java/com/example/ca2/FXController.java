@@ -141,7 +141,7 @@ public class FXController implements Initializable {
     public void showRoutes(ActionEvent event) {
         int startPosition = startingLocation.getSelectionModel().getSelectedIndex();
         int endPosition = endLocation.getSelectionModel().getSelectedIndex();
-        System.out.println(nodes.get(startPosition) + ""+ nodes.get(endPosition).getData());
+     //   System.out.println(nodes.get(startPosition) + ""+ nodes.get(endPosition).getData());
 
         DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(nodes.get(startPosition), nodes.get(endPosition).getData());
 
@@ -169,13 +169,34 @@ public class FXController implements Initializable {
     }
 
     public void showAllRoutes() {
-//        int startPosition = startingLocation.getSelectionModel().getSelectedIndex();
-//        int endPosition = endLocation.getSelectionModel().getSelectedIndex();
-//
-//        for (int i = 0; i < nodes.length; i++) {
-//            for(int j = )
-//        }
-    }
+        int startPosition = startingLocation.getSelectionModel().getSelectedIndex();
+        int endPosition = endLocation.getSelectionModel().getSelectedIndex();
+
+
+                DijkstraAlgorithm.CostedPath cp = DijkstraAlgorithm.searchGraphDepthFirstCheapestPath(nodes.get(startPosition), null, 0, nodes.get(endPosition));
+
+                for (GraphNode<Vertex> n : cp.pathList) {
+                    mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum()));
+
+                }
+                    int j = 0;
+                    int k = j + 1;
+                    for (int l = 0; l < cp.pathList.size(); l++) {
+                            if (k < cp.pathList.size()) {
+                                int x1 = cp.pathList.get(j).getData().getxCoord();
+                                int y1 = cp.pathList.get(j).getData().getyCoord();
+                                int x2 = cp.pathList.get(k).getData().getxCoord();
+                                int y2 = cp.pathList.get(k).getData().getyCoord();
+                                mapPane.getChildren().add(connectNodes(x1, y1, x2, y2, Color.BLUE));
+                            }
+                            j++;
+                            k++;
+                        }
+                    }
+
+
+
+
 
     // The disatnce formula for calculating the distance between two points
     private static int calcDistance(int node1X, int node1Y, int node2X, int node2Y) {

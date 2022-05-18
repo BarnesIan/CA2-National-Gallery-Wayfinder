@@ -41,11 +41,11 @@
                         <Label layoutX="873.0" layoutY="14.0" text="Create a Route:" />
                         <Label layoutX="861.0" layoutY="38.0" text="Start" />
                         <Label layoutX="861.0" layoutY="99.0" text="Destination" />
-                        <Button fx:id="showRoutes" layoutX="861.0" layoutY="263.0" mnemonicParsing="false" onAction="#showRoutes" text="Show Route" />
-                        <Button layoutX="954.0" layoutY="263.0" mnemonicParsing="false" onAction="#restart" text="Restart" />
+                        <Button fx:id="showRoutes" layoutX="861.0" layoutY="263.0" mnemonicParsing="false" onAction="#showRoutes" text="Dijkastras Route" />
+                        <Button layoutX="860.0" layoutY="339.0" mnemonicParsing="false" onAction="#restart" text="Restart" />
                         <ComboBox fx:id="startingLocation" layoutX="857.0" layoutY="55.0" prefWidth="150.0" />
                         <ComboBox fx:id="endLocation" layoutX="857.0" layoutY="122.0" prefWidth="150.0" />
-                        <Button fx:id="showAllRoutes" layoutX="861.0" layoutY="297.0" mnemonicParsing="false" onAction="#showAllRoutes" text="Show Route" />
+                        <Button fx:id="showAllRoutes" layoutX="861.0" layoutY="297.0" mnemonicParsing="false" onAction="#showAllRoutes" text="DFS Route" />
                         <Label fx:id="label" layoutX="737.0" layoutY="450.0" text="Label" />
                         <Label layoutX="861.0" layoutY="180.0" text="Room to Avoid" />
                         <ComboBox fx:id="avoid" layoutX="857.0" layoutY="204.0" prefWidth="150.0" />
