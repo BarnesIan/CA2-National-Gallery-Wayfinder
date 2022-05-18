@@ -1,5 +1,7 @@
 package dijkstra;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,6 +9,7 @@ import java.util.List;
 public class GraphNode<T> {
     public T data;
     public int nodeValue = Integer.MAX_VALUE;
+    public Image image;
 
     public List<GraphLink> nodeList = new ArrayList<>();
 
@@ -47,5 +50,11 @@ public class GraphNode<T> {
         this.nodeList = nodeList;
     }
 
+    public Image getImage() {
+        return image;
+    }
 
+    public void setImage(Image image) {
+        this.image = image;
+    }
 }

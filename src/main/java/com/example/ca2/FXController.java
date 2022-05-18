@@ -22,11 +22,13 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 
 import java.io.*;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+import javax.imageio.ImageIO;
 
 public class FXController implements Initializable {
     @FXML
@@ -93,6 +95,7 @@ public class FXController implements Initializable {
                 rect.setFill(Color.TRANSPARENT);
                 rect.setOpacity(0.3);
                 Tooltip rec = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
+                rec.setGraphic(new ImageView(getImageFromURL(vertices[4])));
                 Tooltip.install(rect, rec);
                 rec.setWidth(500);
                 rec.setHeight(1400);
@@ -122,9 +125,10 @@ public class FXController implements Initializable {
 
     private void setupComboBox() {
         for (int i = 0; i < 65; i++) {
-            startingLocation.getItems().add(nodes.get(i).getData().getRoomNum());
-            endLocation.getItems().add(nodes.get(i).getData().getRoomNum());
-            avoid.getItems().add(nodes.get(i).getData().getRoomNum());
+            var string = nodes.get(i).getData().getName() + " (" + nodes.get(i).getData().getRoomNum() + ")";
+            startingLocation.getItems().add(string);
+            endLocation.getItems().add(string);
+            avoid.getItems().add(string);
         }
     }
 
@@ -162,7 +166,7 @@ public class FXController implements Initializable {
 
         for (GraphNode<Vertex> n : cpa.pathList) {
             System.out.println(n.getData().getRoomNum());
-            mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum()));
+            mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum(), n.getImage()));
 
 
         }
@@ -191,7 +195,7 @@ public class FXController implements Initializable {
                 DijkstraAlgorithm.CostedPath cp = DijkstraAlgorithm.searchGraphDepthFirstCheapestPath(nodes.get(startPosition), null, 0, nodes.get(endPosition));
 
                 for (GraphNode<Vertex> n : cp.pathList) {
-                    mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum()));
+                    mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum(), n.getImage()));
 
                 }
                     int j = 0;
@@ -227,14 +231,20 @@ public class FXController implements Initializable {
         return line;
     }
 
-    public Rectangle drawNodes(int x, int y, Color color,String name, String roomNum) {
+    public Rectangle drawNodes(int x, int y, Color color,String name, String roomNum, Image image) {
         Rectangle rec = new Rectangle(x, y, 10, 10);
         rec.setStroke(Color.TRANSPARENT);
         rec.setFill(color);
         rec.setOpacity(0.3);
         Tooltip rect = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
         Tooltip.install(rec, rect);
+        rect.setGraphic(new ImageView(image));
         return rec;
+    }
+
+    public Image getImageFromURL(String url) throws IOException {
+        Image image = new Image(url);
+        return image;
     }
 
 }
