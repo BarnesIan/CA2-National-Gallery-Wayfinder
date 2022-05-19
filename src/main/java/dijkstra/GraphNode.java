@@ -9,7 +9,6 @@ import java.util.List;
 public class GraphNode<T> {
     public T data;
     public int nodeValue = Integer.MAX_VALUE;
-    public Image image;
 
     public List<GraphLink> nodeList = new ArrayList<>();
 
