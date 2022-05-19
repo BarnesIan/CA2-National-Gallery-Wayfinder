@@ -42,6 +42,7 @@ public class FXController implements Initializable {
 
     @FXML
     Pane mapPane;
+    boolean bInitialized = false;
 
     private DijkstraAlgorithm da;
         List<GraphNode<Vertex>> nodes = new ArrayList<>();
@@ -237,13 +238,17 @@ public class FXController implements Initializable {
         rec.setFill(color);
         rec.setOpacity(0.3);
         Tooltip rect = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
-        Tooltip.install(rec, rect);
-        rect.setGraphic(new ImageView(image));
+        if (!bInitialized) {
+            bInitialized = true;
+            ImageView imageView = new ImageView(image);
+            rect.setGraphic(imageView);
+            Tooltip.install(rec, rect);
+        }
         return rec;
     }
 
     public Image getImageFromURL(String url) throws IOException {
-        Image image = new Image(url);
+        Image image = new Image(url,161,161,false,false);
         return image;
     }
 
