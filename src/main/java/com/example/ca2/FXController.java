@@ -95,11 +95,13 @@ public class FXController implements Initializable {
                 rect.setTranslateY(mainimage.getTranslateY());
                 rect.setFill(Color.TRANSPARENT);
                 rect.setOpacity(0.3);
-                Tooltip rec = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
-                rec.setGraphic(new ImageView(getImageFromURL(vertices[4])));
-                Tooltip.install(rect, rec);
-                rec.setWidth(500);
-                rec.setHeight(1400);
+                if (!bInitialized) {
+                    Tooltip rec = new Tooltip("Room Name: " + name + "\n" + " Number :" + roomNum + "\n");
+                    rec.setGraphic(new ImageView(getImageFromURL(vertices[4])));
+                    Tooltip.install(rect, rec);
+                    rec.setWidth(500);
+                    rec.setHeight(1400);
+                }
             }
             for(int i = 0; i < nodes.size(); i ++){
                 for(int j = 0; j < nodes.size(); j ++){
@@ -122,6 +124,7 @@ public class FXController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        bInitialized = true;
     }
 
     private void setupComboBox() {
@@ -238,12 +241,9 @@ public class FXController implements Initializable {
         rec.setFill(color);
         rec.setOpacity(0.3);
         Tooltip rect = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
-        if (!bInitialized) {
-            bInitialized = true;
-            ImageView imageView = new ImageView(image);
-            rect.setGraphic(imageView);
-            Tooltip.install(rec, rect);
-        }
+        ImageView imageView = new ImageView(image);
+        rect.setGraphic(imageView);
+        Tooltip.install(rec, rect);
         return rec;
     }
 
