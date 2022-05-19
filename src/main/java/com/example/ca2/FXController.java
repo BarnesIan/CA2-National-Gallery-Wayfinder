@@ -79,6 +79,7 @@ public class FXController implements Initializable {
         String[] vertices = new String[0];
         int counter = -1;
         try {
+            if (!bInitialized) {
             br = new BufferedReader(new FileReader("src/main/resources/com/example/ca2/Vertices.txt"));
             while ((line = br.readLine()) != null) {
                 vertices = line.split(",");
@@ -88,14 +89,13 @@ public class FXController implements Initializable {
                 int y = Integer.valueOf(vertices[3]);
                 System.out.println("x: " + x + " y: " + y + " name : " + name);
 //                nodes.add(new GraphNode<>(new Vertex(roomNum,name, x, y)));
-                nodes.add(new GraphNode<>(new Vertex(roomNum, name, x, y)));
+                nodes.add(new GraphNode<>(new Vertex(roomNum, name, x, y, getImageFromURL(vertices[4]))));
                 Rectangle rect = new Rectangle(x,y,10,10);
                 mapPane.getChildren().add(rect);
                 rect.setTranslateX(mainimage.getTranslateX());
                 rect.setTranslateY(mainimage.getTranslateY());
                 rect.setFill(Color.TRANSPARENT);
                 rect.setOpacity(0.3);
-                if (!bInitialized) {
                     Tooltip rec = new Tooltip("Room Name: " + name + "\n" + " Number :" + roomNum + "\n");
                     rec.setGraphic(new ImageView(getImageFromURL(vertices[4])));
                     Tooltip.install(rect, rec);
@@ -156,9 +156,9 @@ public class FXController implements Initializable {
 
     public void restart(ActionEvent event) {
         mapPane.getChildren().removeIf((e -> e.getClass() != mainimage.getClass()));
-        nodes.removeAll(nodes);
-        loadData();
-        System.out.println(nodes.size());
+//        nodes.removeAll(nodes);
+//        loadData();
+//        System.out.println(nodes.size());
     }
 
     public void showRoutes(ActionEvent event) {
@@ -170,7 +170,7 @@ public class FXController implements Initializable {
 
         for (GraphNode<Vertex> n : cpa.pathList) {
             System.out.println(n.getData().getRoomNum());
-            mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum(), n.getImage()));
+            mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum(), n.getData().getImage()));
 
 
         }
@@ -199,7 +199,7 @@ public class FXController implements Initializable {
                 DijkstraAlgorithm.CostedPath cp = DijkstraAlgorithm.searchGraphDepthFirstCheapestPath(nodes.get(startPosition), null, 0, nodes.get(endPosition));
 
                 for (GraphNode<Vertex> n : cp.pathList) {
-                    mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum(), n.getImage()));
+                    mapPane.getChildren().addAll(drawNodes(n.getData().getxCoord(), n.getData().getyCoord(), Color.PINK, n.getData().getName(),n.getData().getRoomNum(), n.getData().getImage()));
 
                 }
                     int j = 0;
@@ -240,10 +240,13 @@ public class FXController implements Initializable {
         rec.setStroke(Color.TRANSPARENT);
         rec.setFill(color);
         rec.setOpacity(0.3);
+
         Tooltip rect = new Tooltip("Room Name: " + name + "\n" +" Number :" + roomNum + "\n");
-        ImageView imageView = new ImageView(image);
-        rect.setGraphic(imageView);
+        rect.setGraphic(new ImageView(image));
         Tooltip.install(rec, rect);
+        rect.setWidth(500);
+        rect.setHeight(1400);
+
         return rec;
     }
 

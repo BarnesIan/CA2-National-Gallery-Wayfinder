@@ -40,52 +40,6 @@ public class DijkstraAlgorithm {
         return allPaths.isEmpty() ? null : Collections.min(allPaths, Comparator.comparingInt(p -> p.pathCost));
     }
 
-       /* public static <T> CostedPath findCheapestPath(GraphNode<Vertex> startNode, T lookingfor) {
-        CostedPath cp = new CostedPath();
-        List<GraphNode<Vertex>> encountered = new ArrayList<>(), unencountered = new ArrayList<>();
-        startNode.nodeValue = 0;
-        unencountered.add(startNode);
-        GraphNode<Vertex> currentNode;
-
-        do {
-            currentNode = unencountered.remove(0);
-            encountered.add(currentNode);
-
-            if (currentNode.data.equals(lookingfor)) {
-                cp.pathList.add(currentNode);
-                cp.pathCost = currentNode.nodeValue;
-
-                while (currentNode != startNode) {
-                    boolean foundPrevPathNode = false;
-
-                    for(GraphNode<Vertex> n : encountered) {
-                        for(GraphLink e : n.nodeList) {
-                            if (e.destNode == currentNode && currentNode.nodeValue - e.cost == n.nodeValue) {
-                                cp.pathList.add(0, n);
-                                currentNode = n;
-                                foundPrevPathNode = true;
-                                break;
-                            }
-                        }
-                        if (foundPrevPathNode) break;
-                    }
-                }
-
-                for(GraphNode n : encountered) n.nodeValue = Integer.MAX_VALUE;
-                for(GraphNode n : unencountered) n.nodeValue = Integer.MAX_VALUE;
-
-                return cp;
-            }
-
-            for (GraphLink e : currentNode.nodeList)
-                if (!encountered.contains(e.destNode)) {
-                    e.destNode.nodeValue = Integer.min(e.destNode.nodeValue, currentNode.nodeValue + e.cost);
-                    unencountered.add((GraphNode<Vertex>) e.destNode);
-                }
-            Collections.sort(unencountered, (n1,n2) -> n1.nodeValue - n2.nodeValue);
-        } while (!unencountered.isEmpty());
-        return null;
-    }*/
     public static <T> CostedPath findCheapestPathDijkstra(GraphNode<?> startNode, T lookingfor, List<GraphNode<Vertex>> ignoreList) {
         CostedPath cp = new CostedPath(); //Create result object for cheapest path
 
@@ -146,33 +100,5 @@ public class DijkstraAlgorithm {
         } while (!unencountered.isEmpty());
         return null; //No path found, so return null
     }
-//
-//    public static <T> List<List<GraphNode<?>>> findAllPathsDepthFirst(GraphNode<?> from, List<GraphNode<?>> encountered, T lookingfor) {
-//        List<List<GraphNode<?>>> result = null, temp2;
-//        if (from.data.equals(lookingfor)) { //Found it
-//            List<GraphNode<?>> temp = new ArrayList<>(); //Create new single solution path list
-//            temp.add(from); //Add current node to the new single path list
-//            result = new ArrayList<>(); //Create new "list of lists" to store path permutations
-//            result.add(temp); //Add the new single path list to the path permutations list
-//            return result; //Return the path permutations list
-//        }
-//        if (encountered == null) encountered = new ArrayList<>(); //First node so create new (empty) encountered list
-//        encountered.add(from); //Add current node to encountered list
-//        for (GraphLink adjNode : from.nodeList) {
-//            if (!encountered.contains(adjNode)) {
-//                temp2 = findAllPathsDepthFirst(adjNode, new ArrayList<>(encountered), lookingfor); //Use clone of encountered list
-////for recursive call!
-//                if (temp2 != null) { //Result of the recursive call contains one or more paths to the solution node
-//                    for (List<GraphNode<?>> x : temp2) //For each partial path list returned
-//                        x.add(0, from); //Add the current node to the front of each path list
-//                    if (result == null)
-//                        result = temp2; //If this is the first set of solution paths found use it as the result
-//                    else result.addAll(temp2); //Otherwise append them to the previously found paths
-//                }
-//            }
-//        }
-//        return result;
-//    }
-
 }
 

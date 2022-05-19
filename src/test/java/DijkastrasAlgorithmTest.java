@@ -26,10 +26,10 @@ public class DijkastrasAlgorithmTest {
     @Before
     public void setUp() {
 
-        a = new Vertex("0", "TestRoomA", 10, 10);
-        b = new Vertex("1", "TestRoomB",5,5);
-        c = new Vertex("2", "TestRoomC", 20, 13);
-        d = new Vertex("3", "TestRoomD",2,0);
+        a = new Vertex("0", "TestRoomA", 10, 10, null);
+        b = new Vertex("1", "TestRoomB",5,5, null);
+        c = new Vertex("2", "TestRoomC", 20, 13, null);
+        d = new Vertex("3", "TestRoomD",2,0, null);
 
         aNode = new GraphNode<>(a);
         bNode = new GraphNode<>(b);
