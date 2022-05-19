@@ -8,8 +8,12 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DijkastrasAlgorithmTest {
+    List<GraphNode<Vertex>> avoidNodes = new ArrayList<>();
     Vertex a;
     Vertex b;
     Vertex c;
@@ -50,9 +54,17 @@ public class DijkastrasAlgorithmTest {
 
     @Test
     public void testDijkstraAlgorithm(){
-//        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(aNode, dNode.getData());
-        //System.out.println(cpa.pathCost);
-//        assertEquals(12,cpa.pathCost);
+        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(aNode, dNode.getData(),null);
+        System.out.println(cpa.pathCost);
+        assertEquals(12,cpa.pathCost);
+    }
+
+    @Test
+    public void testDijkstraAlgorithmWithAvoidance(){
+        avoidNodes.add(bNode);
+        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(aNode, dNode.getData(),avoidNodes);
+        System.out.println(cpa.pathCost);
+        assertEquals(32,cpa.pathCost);
     }
 
     private static int calcDistance(int node1X, int node1Y, int node2X, int node2Y) {
