@@ -8,8 +8,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class DijkastrasAlgorithmTest {
+    List<GraphNode<Vertex>> avoidNodes = new ArrayList<>();
+    List<GraphNode<Vertex>> nodes = new ArrayList<>();
     Vertex a;
     Vertex b;
     Vertex c;
@@ -50,9 +55,34 @@ public class DijkastrasAlgorithmTest {
 
     @Test
     public void testDijkstraAlgorithm(){
-//        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(aNode, dNode.getData());
-        //System.out.println(cpa.pathCost);
-//        assertEquals(12,cpa.pathCost);
+        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(aNode, dNode.getData(),null);
+        System.out.println(cpa.pathCost);
+        assertEquals(12,cpa.pathCost);
+    }
+
+    @Test
+    public void testDijkstraAlgorithmWithAvoidance(){
+        avoidNodes.add(bNode);
+        DijkstraAlgorithm.CostedPath cpa = DijkstraAlgorithm.findCheapestPathDijkstra(aNode, dNode.getData(),avoidNodes);
+        System.out.println(cpa.pathCost);
+        assertEquals(32,cpa.pathCost);
+    }
+    @Test
+    public void testAddNode(){
+        //   System.out.println(nodes.size());
+        GraphNode newNode = new GraphNode<>(a);
+        nodes.add(newNode);
+        assertEquals(1,nodes.size());
+
+    }
+    @Test
+    public void testDeleteNode(){
+        GraphNode newNode = new GraphNode<>(a);
+        GraphNode newNode1 = new GraphNode<>(b);
+        nodes.add(newNode);
+        nodes.add(newNode1);
+        nodes.remove(newNode);
+        assertEquals(1,nodes.size());
     }
 
     private static int calcDistance(int node1X, int node1Y, int node2X, int node2Y) {
