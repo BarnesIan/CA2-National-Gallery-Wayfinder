@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ca2.FXController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="696.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ca2.FXController">
     <children>
         <MenuBar layoutX="1.0" layoutY="-4.0" prefHeight="29.0" prefWidth="1102.0">
             <menus>
@@ -25,7 +30,29 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="786.0" prefWidth="1601.0">
                      <children>
-                        <ImageView fx:id="mainimage" fitHeight="625.0" fitWidth="735.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                        <Pane fx:id="mapPane" layoutX="14.0" layoutY="10.0">
+                           <children>
+                              <ImageView fx:id="mainimage" fitHeight="625.0" fitWidth="735.0" onMouseClicked="#clickedImage" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@map.jpg" />
+                                 </image></ImageView>
+                           </children>
+                        </Pane>
+                        <Label layoutX="873.0" layoutY="14.0" text="Create a Route:" />
+                        <Label layoutX="861.0" layoutY="38.0" text="Start" />
+                        <Label layoutX="861.0" layoutY="99.0" text="Destination" />
+                        <Button fx:id="showRoutes" layoutX="863.0" layoutY="299.0" mnemonicParsing="false" onAction="#showRoutes" text="Dijkastras Route" />
+                        <Button layoutX="862.0" layoutY="375.0" mnemonicParsing="false" onAction="#restart" text="Restart" />
+                        <ComboBox fx:id="startingLocation" layoutX="857.0" layoutY="55.0" prefWidth="150.0" />
+                        <ComboBox fx:id="endLocation" layoutX="857.0" layoutY="122.0" prefWidth="150.0" />
+                        <Button fx:id="showAllRoutes" layoutX="863.0" layoutY="333.0" mnemonicParsing="false" onAction="#showAllRoutes" text="DFS Route" />
+                        <Label fx:id="label" layoutX="737.0" layoutY="450.0" text="Label" />
+                        <Label layoutX="861.0" layoutY="180.0" text="Room to Avoid" />
+                        <ComboBox fx:id="avoid" layoutX="857.0" layoutY="204.0" prefWidth="150.0" />
+                        <Button layoutX="1016.0" layoutY="204.0" mnemonicParsing="false" onAction="#addToAvoidList" text="Add" />
+                        <ComboBox fx:id="avoidRooms" layoutX="856.0" layoutY="254.0" prefWidth="150.0" />
+                        <Button layoutX="1015.0" layoutY="254.0" mnemonicParsing="false" onAction="#removeFromAvoidList" text="Remove" />
+                        <Label layoutX="863.0" layoutY="237.0" text="Rooms to Avoid" />
                      </children>
                         </AnchorPane>
                     </content>

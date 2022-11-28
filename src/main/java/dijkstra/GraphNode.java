@@ -1,6 +1,9 @@
 package dijkstra;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GraphNode<T> {
@@ -13,13 +16,13 @@ public class GraphNode<T> {
         this.data = data;
     }
 
-    public void connectToNodeDirected(GraphNode<T> destNode, int cost) {
-        nodeList.add(new GraphLink(destNode, cost));
+    public void connectToNodeDirected(GraphNode<Vertex> destNode, int cost) {
+        nodeList.add(new GraphLink(destNode ,cost));
     }
 
-    public void connectToNodeUndirected(GraphNode<T> destNode, int cost) {
+    public void connectToNodeUndirected(GraphNode<?> destNode, int cost) {
         nodeList.add(new GraphLink(destNode, cost));
-        destNode.nodeList.add(new GraphLink(this, cost));
+       destNode.nodeList.add(new GraphLink(this, cost));
     }
 
     public T getData() {
@@ -45,4 +48,5 @@ public class GraphNode<T> {
     public void setNodeList(List<GraphLink> nodeList) {
         this.nodeList = nodeList;
     }
+
 }

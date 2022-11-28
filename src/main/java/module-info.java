@@ -1,6 +1,7 @@
 module com.example.ca2 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.example.ca2 to javafx.fxml;

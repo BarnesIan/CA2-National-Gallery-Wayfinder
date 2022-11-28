@@ -1,16 +1,19 @@
 package dijkstra;
 
+import javafx.scene.image.Image;
+
 public class Vertex {
     private String roomNum;
     private String name;
     private int xCoord,yCoord;
+    private Image image;
 
-    public Vertex(String roomNum,String name,int xCoord,int yCoord){
+    public Vertex(String roomNum,String name,int xCoord,int yCoord, Image image){
         this.roomNum = roomNum;
         this.name = name;
         this.xCoord = xCoord;
         this.yCoord = yCoord;
-
+        this.image = image;
     }
 
     public String getRoomNum() {
@@ -47,5 +50,13 @@ public class Vertex {
     @Override
     public String toString(){
         return name + roomNum + "\n";
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
